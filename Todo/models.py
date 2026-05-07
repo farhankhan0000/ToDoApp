@@ -2,7 +2,7 @@ from database import Base
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 
 class Users(Base):
-    __tablename__ = 'user'
+    __tablename__ = 'users'
     
     id = Column(Integer, primary_key= True)
     email = Column(String, unique= True)
@@ -11,7 +11,6 @@ class Users(Base):
     last_name = Column(String)
     hashed_password = Column(String)
     is_active = Column(String)
-    complete = Column(Boolean, default= True)
     role = Column(String)
 
 
@@ -24,4 +23,4 @@ class Todos(Base):
     description = Column(String)
     priority = Column(Integer)
     complete = Column(Boolean, default = False)
-    owner_id = Column(Integer, ForeignKey("user.id"))
+    owner_id = Column(Integer, ForeignKey("users.id"))
